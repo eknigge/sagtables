@@ -35,6 +35,10 @@ print_order = [
     ]  
 
 
+def has_digit_dash_two_digits(text):
+    pattern = r'\d-\d{2}'
+    return bool(re.search(pattern, text))
+
 def length_of_longest_string(d: dict):
     d_new = {k: v for k, v in d.items() if k != 'sag_table'}
     max_length = 0
@@ -44,7 +48,7 @@ def length_of_longest_string(d: dict):
             expanded_length = len(value.expandtabs())
             if expanded_length > max_length:
                 max_length = expanded_length
-    if four_digit_sag_value:
+    if has_digit_dash_two_digits(d['sag_table']):
         max_length += 1
     return max_length 
 
